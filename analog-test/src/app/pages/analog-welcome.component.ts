@@ -27,7 +27,7 @@ import { Note } from '../../note';
             class="rounded-2xl bg-zinc-200 px-4 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             target="_blank"
             href="https://twitter.com/analogjs"
-            >Follow along on Twitter</a
+            >Follow along on Twitter guys</a
           >
           <h1
             class="font-heading font-medium text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
