@@ -1,0 +1,68 @@
+{
+  "name": "analog-test",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "./analog-test/src",
+  "targets": {
+    "build": {
+      "executor": "@analogjs/platform:vite",
+      "outputs": [
+        "{options.outputPath}",
+        "{workspaceRoot}/dist/analog-test/.nitro",
+        "{workspaceRoot}/dist/analog-test/ssr",
+        "{workspaceRoot}/dist/analog-test/analog"
+      ],
+      "options": {
+        "main": "analog-test/src/main.ts",
+        "configFile": "analog-test/vite.config.ts",
+        "outputPath": "dist/analog-test/client",
+        "tsConfig": "analog-test/tsconfig.app.json"
+      },
+      "defaultConfiguration": "production",
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "sourcemap": false,
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@analogjs/platform:vite-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "analog-test:build",
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "analog-test:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "analog-test:build:production"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "analog-test:build"
+      }
+    },
+    "test": {
+      "executor": "@analogjs/platform:vitest",
+      "outputs": ["{projectRoot}/coverage"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["./analog-test/**/*.{ts,html}"]
+      }
+    }
+  },
+  "tags": []
+}
